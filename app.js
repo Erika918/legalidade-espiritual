@@ -158,8 +158,44 @@
   "Senhor Retira Toda Pedra de Tropeço da Minha Vida Financeira",
   "Deus esta Quebrando Todo Laço da Minha Vida"
 ];
+
+const frasesContainer = document.getElementById('frases-container');
+
 function novaFrase() {
-  const container = document.getElementById("frases-container");
-  const indice = Math.floor(Math.random() * frases.length);
-  container.textContent = frases[indice];
+  const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+  const balao = document.getElementById('balaoFrase');
+
+  balao.innerHTML = `
+    <span class="texto-frase">${fraseAleatoria}</span>
+    <span class="compartilhar" onclick="compartilharFrase('${fraseAleatoria}')">📤</span>
+  `;
+
+  // Reaplica a animação
+  balao.classList.remove('balao-frase');
+  void balao.offsetWidth; // força reflow para reiniciar a animação
+  balao.classList.add('balao-frase');
 }
+
+
+function compartilharFrase(frase) {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Frase Motivacional',
+      text: frase,
+      url: window.location.href
+    }).catch((err) => console.error('Erro ao compartilhar:', err));
+  } else {
+    alert('Seu navegador não suporta compartilhamento.');
+  }
+}
+
+// Clicar na tela também troca a frase
+document.body.addEventListener('click', (e) => {
+  // Não dispara se clicou no botão ou em algum elemento dentro da frase
+  if (!e.target.closest('.botao-circular') && !e.target.closest('.compartilhar')) {
+    novaFrase();
+  }
+});
+
+// Primeira frase ao carregar
+novaFrase();

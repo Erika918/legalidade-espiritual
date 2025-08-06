@@ -1,36 +1,138 @@
- body {
-  font-family: Arial, sans-serif;
-  background: #FFFACD;
-  color: #4B0082;
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #4B0082, #FFD700);
   margin: 0;
-  padding: 20px;
+  padding: 0;
+  color: white;
   text-align: center;
+  overflow: hidden;
+}
+
+main {
+  padding: 30px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.8rem;
+  color: hsl(53, 13%, 12%);
   margin-bottom: 10px;
-  color: #800000; 
 }
 
 .flags {
   font-size: 2rem;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 #frases-container {
-  background: #4B0082;
-  color: white;
-  font-size: 1.2rem;
-  padding: 15px 25px;
-  border-radius: 15px;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
   margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
+
+/* Estilo antigo (opcional manter se quiser usar em outro lugar) */
+.balao {
+  background: linear-gradient(135deg, #6a0572, #f4d03f);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 20px;
+  font-size: 1.3rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  max-width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: aparecerBalao 0.8s ease forwards;
+}
+
+@keyframes aparecerBalao {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.balao .compartilhar {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.balao:hover .compartilhar,
+.balao:focus-within .compartilhar {
+  display: inline;
+}
+
+/* Estilo NOVO - balão com animação e fundo dinâmico */
+.balao-frase {
+  background: linear-gradient(135deg, #6a0572, #f4d03f); /* Roxo para dourado */
+  color: white;
+  padding: 20px 30px;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 50px auto;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: aparecerBalao 1.5s ease-out forwards;
+  position: relative;
+}
+
+/* Botão compartilhar no novo balão */
+.balao-frase .compartilhar {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.balao-frase:hover .compartilhar {
+  display: inline;
+}
+
+/* Animação de entrada do balão */
+@keyframes aparecerBalao {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animação suave de fundo */
+@keyframes animarFundo {
+  0% { background: linear-gradient(135deg, #6a0572, #f4d03f); }
+  50% { background: linear-gradient(135deg, #f4d03f, #6a0572); }
+  100% { background: linear-gradient(135deg, #6a0572, #f4d03f); }
+}
+
+@keyframes estourar {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .botao-circular {
-  background: green;
-  color: white;
+  background-color: #FFD700;
+  color: #4B0082;
   border: none;
   border-radius: 50%;
   width: 100px;
@@ -38,11 +140,64 @@ h1 {
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  transition: background 0.3s ease;
-  line-height: 1.2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s ease;
 }
 
 .botao-circular:hover {
-  background: darkgreen;
+  background-color: #fff177;
+}
+.circulo-rodape {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, #FFD700, #FFB800);
+  border-radius: 50%;
+  animation: pulsar 2s infinite ease-in-out;
+  cursor: pointer;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.3s ease, height 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+.circulo-rodape:hover {
+  width: 260px;
+  height: auto;
+  border-radius: 15px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.info-rodape {
+  color: white;
+  font-size: 13px;
+  text-align: left;
+  display: none;
+  max-width: 240px;
+}
+
+.circulo-rodape:hover .info-rodape {
+  display: block;
+}
+
+.info-rodape a {
+  color: #FFD700;
+  text-decoration: none;
+}
+
+.info-rodape a:hover {
+  text-decoration: underline;
+}
+
+@keyframes pulsar {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.9; }
 }
