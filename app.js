@@ -180,12 +180,18 @@ function novaFrase() {
 function compartilharFrase(frase) {
   if (navigator.share) {
     navigator.share({
-      title: 'Frase Motivacional',
-      text: frase,
-      url: window.location.href
-    }).catch((err) => console.error('Erro ao compartilhar:', err));
+      title: 'Frase do Dia ✨',
+      text: frase
+    }).catch((err) => {
+      // Se o usuário cancelar ou falhar, abre WhatsApp como fallback
+      const texto = encodeURIComponent(frase);
+      const url = `https://wa.me/?text=${texto}`;
+      window.open(url, '_blank');
+    });
   } else {
-    alert('Seu navegador não suporta compartilhamento.');
+    const texto = encodeURIComponent(frase);
+    const url = `https://wa.me/?text=${texto}`;
+    window.open(url, '_blank');
   }
 }
 
