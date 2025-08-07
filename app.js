@@ -157,6 +157,7 @@
   "Eu Tenho um Deus que Me Guarda e não Me Deixaras Cair",
   "Senhor Retira Toda Pedra de Tropeço da Minha Vida Financeira",
   "Deus esta Quebrando Todo Laço da Minha Vida"
+  "O Meu Deus Iluminara Todos Os meus Caminhos"
 ];
 
 const frasesContainer = document.getElementById('frases-container');
