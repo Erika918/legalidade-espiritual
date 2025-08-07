@@ -1,4 +1,5 @@
  const frases = [
+  "Foste Fiél no Pouco no Muito Te Colocarei"
   "Deus transforma choro em sorriso e luta em vitória.",
   "A fé em Deus é a força que move montanhas.",
   "Quem confia no Senhor é como um monte inabalável.",
@@ -157,7 +158,8 @@
   "Eu Tenho um Deus que Me Guarda e não Me Deixaras Cair",
   "Senhor Retira Toda Pedra de Tropeço da Minha Vida Financeira",
   "Deus esta Quebrando Todo Laço da Minha Vida"
-  "O Meu Deus Iluminara Todos Os meus Caminhos"
+  "O Meu Deus Iluminara Todos Os meus Caminhos" 
+  "o sucesso é a soma de pequenos esforços repetidos dia após dia"
 ];
 
 const frasesContainer = document.getElementById('frases-container');
