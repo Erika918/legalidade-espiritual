@@ -176,7 +176,6 @@ function novaFrase() {
   balao.classList.add('balao-frase');
 }
 
-
 function compartilharFrase(frase) {
   if (navigator.share) {
     navigator.share({
